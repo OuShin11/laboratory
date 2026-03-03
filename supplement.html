@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Website Design - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html">
+                <img src="./image/meiji_logo.png" alt="">
+            </a>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="research.html">RESEARCH</a></li>
+                    <li><a href="theses.html">THESES</a></li>
+                    <li><a href="event.html">EVENT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    
+        <h1>Supervisor</h1>
+        
+    </section>
+
+
+    <!---------------------- Boss ---------------------->
+    
+    <section class="boss">
+        <h1>Principal Investigator</h1>
+        <p>Meet our supervisor and learn about our research directions.</p>
+
+        <div class="boss-card">
+            <div class="boss-left">
+            <!-- 把图片路径换成你自己的，比如 ./image/prof.jpg -->
+            <img src="./image/professor.jpg" alt="Professor portrait" />
+            </div>
+
+            <div class="boss-right">
+            <h2>Prof. Taro Yamada</h2>
+            <h3>Department of Mathematical Sciences, Meiji University</h3>
+
+            <p class="boss-bio">
+                Our laboratory focuses on mathematical modeling, data-driven analysis,
+                and computational methods to understand complex systems. We welcome
+                motivated students from diverse backgrounds.
+            </p>
+
+            <div class="boss-tags">
+                <span>Mathematical Modeling</span>
+                <span>Network Science</span>
+                <span>Optimization</span>
+                <span>Computational Simulation</span>
+            </div>
+
+            <div class="boss-actions">
+                <a class="btn" href="mailto:yourboss@meiji.ac.jp">Email</a>
+                <a class="btn btn-outline" href="research.html">See Research</a>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <!---------------------- Footer ---------------------->
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h4>Ginder Lab.</h4>
+            </div>
+
+            <div class="footer-right">
+                <a href="mailto:ginder@meiji.ac.jp" class="info-item">
+                    <i class="fa fa-envelope"></i>
+                    <span>ginder@meiji.ac.jp</span>
+                </a>
+
+                <a class="info-item" href="https://www.google.com/maps/place/%E6%98%8E%E6%B2%BB%E5%A4%A7%E5%AD%A6%E4%B8%AD%E9%87%8E%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9/@35.7068287,139.6490532,15z/data=!4m14!1m7!3m6!1s0x6018f28568f3a5e5:0x567bdf699508c4ba!2z5piO5rK75aSn5a2m5Lit6YeO44Kt44Oj44Oz44OR44K5!8m2!3d35.7068291!4d139.6593529!16s%2Fg%2F1hhl844lh!3m5!1s0x6018f28568f3a5e5:0x567bdf699508c4ba!8m2!3d35.7068291!4d139.6593529!16s%2Fg%2F1hhl844lh?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                    <i class="fa fa-map-marker"></i>
+                    <span>School of Interdisciplinary Mathematical Sciences, Meiji University</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © <span id="year"></span> Ginder Laboratory. All Rights Reserved.
+        </div>
+    </footer>
+
+    <h2>check</h2>
+    <p>check</p>
+
+
+    <!---------- JavaScript for Toggle Menu ------------>
+    <script>
+
+        var navLinks = document.getElementById("navLinks"); 
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+    </script>
+</body>
+</html>

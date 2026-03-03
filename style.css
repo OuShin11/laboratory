@@ -1,0 +1,777 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 26.2.28更新 跳转的时候添加滚动效果 */
+html {
+    scroll-behavior: smooth;
+    transition: 1s;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(./image/background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.logo {
+    width: 7vw;
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 75px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #553CE2;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.text-box{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff; 
+    border: 1px solid #fff;
+    margin-top: 3%;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #553CE2;
+    background: #553CE2;
+    transition: 1s;
+}
+
+nav .fa {
+    display: none;
+}
+
+@media(max-width: 700px) {
+    /* 新增overflow-x, 防止off-canvas撑宽页面 */
+    /* 需要 header 里 position: relative */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+    .text-box h1 {
+        font-size: 30px;
+    }
+
+    .nav-links ul li {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        background: #553CE2;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 0.75s;
+    }
+
+    nav .fa {
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .nav-links ul {
+        padding: 30px;
+    }
+}
+
+
+/* ---------------- research topics ---------------- */
+
+.course {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.course-col p{
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 10px;
+}
+
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-col {
+    flex-basis: 31%;
+    background: #f4f2fa;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    transition: 0.5s;
+}
+
+.course-col h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.course-col:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 700px){
+    .row {
+        flex-direction: column;
+    }
+}
+
+
+/* ---------------- professor ---------------- */
+
+.boss {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+/* 标题在 index html 中被删除 */
+.boss h1 {
+  margin-bottom: 40px;
+}
+
+.boss p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 卡片主体：跟你 Courses 那种圆角淡色块一致 */
+.boss-card {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  background: #f4f2fa; /* 你截图里那种淡紫感 */
+  border-radius: 14px;
+  padding: 30px;
+
+  display: flex;
+  /* 新增：纵向结构排列 */
+  flex-direction: column;   /* 关键 */
+  gap: 28px;
+  align-items: center;
+  text-align: left;
+}
+
+/* 新增 boss-main 负责内部图片和介绍的左右排列 */
+.boss-main {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+/* 左边头像 */
+.boss-left img {
+  width: 180px;
+  height: 180px;
+  border-radius: 14px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 右边文字 */
+
+/* 允许占满剩余空间（不是很懂虽然说... */
+.boss-right {
+  flex: 1;
+}
+
+.boss-right h2 {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+
+.boss-right h3 {
+  font-size: 14px;
+  font-weight: 500;
+  /* 新加 text-align 靠左显示 */
+  /* text-align: left; */
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.boss-bio {
+  color: #555;
+  line-height: 1.8;
+  /* margin: 0 0 18px; */
+}
+
+/* 研究方向标签 */
+.boss-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.boss-tags span {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #444;
+}
+
+
+/* 新版：外链样式 */
+.boss-actions {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.boss-actions a {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+ 
+/* 响应式：手机上改成上下布局 */
+@media (max-width: 700px) {
+    .boss-right {
+        text-align: center;
+    }
+  
+    .boss-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .boss-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .boss-left img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+
+/* ----------------- News & Event -------------------- */
+
+.facilities {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.facilities-col {
+    flex-basis: 46%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+.facilities-col img {
+    width: 100%;
+    aspect-ratio: 16 / 9;      /* 固定高度 */
+    object-fit: cover;    /* 关键！裁切而不拉伸 */
+    border-radius: 10px;
+}
+
+.facilities-col p {
+    padding: 0;
+}
+
+.facilities-col h3 {
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+
+/* ----------------- testimonials -------------------- */
+
+.testimonials {
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.testimonial-col {
+    flex-basis: 44%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    background: #f4f2fa;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.testimonial-col img {
+    width: 40px; 
+    height: 40px;
+    /* object-fit : cover 保持比例，不拉伸，填满容器，超出的部分裁掉 */
+    object-fit: cover;
+    margin-left: 5px;
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.testimonial-col p {
+    padding: 0;
+}
+
+.testimonial-col h3 {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.testimonial-col .fa {
+    color: #f44336;
+}
+
+@media(max-width: 700px) {
+    .testimonial-col img {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+
+/* ----------------- footer -------------------- */
+
+.footer {
+    margin-top: 50px;
+    background: #f4f2fa;
+    color: #111;
+    padding: 24px 8%;
+}
+
+.footer-top {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-left h4 {
+    color: #696969;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #777;
+    text-decoration: none;
+}
+
+.info-item i {
+    color: #553CE2;
+
+    /* 以下3行为补充，因为icon大小不一样 */
+    width: 18px;          /* 固定图标占位宽度：16~20px都行 */
+    text-align: center;   /* 图标在占位区居中 */
+    flex: 0 0 18px;       /* 不要被压缩 */
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+}
+
+/* =========================== 通用 =========================== */
+
+.sub-header {
+    height: 38vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)), url(./image/background.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    /* 新增 position */
+    position: relative;
+    color: #fff;
+}
+
+.sub-header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 3%;
+}
+
+.purple-btn {
+    border: 1px solid #553CE2;
+    background: transparent;
+    color: #553CE2;
+}
+
+.purple-btn:hover {
+    color: #fff;
+}
+
+
+@media(max-width:700px) {
+    .sub-header h1 {
+        font-size: 26px;
+    }
+}
+
+
+
+/* ========================= Theses Page ========================= */
+
+/* --- Theses Page --- */
+
+.theses {
+  width: 85%;
+  margin: auto;
+  padding: 80px 0;
+}
+
+.theses-section {
+  margin-bottom: 80px;
+}
+
+.theses-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* 卡片容器 */
+.card-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 卡片样式 */
+.thesis-card {
+  width: 100%;
+  background: #f4f3ff;
+  padding: 28px;
+  border-radius: 16px;
+  max-width: 800px;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.thesis-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.thesis-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.meta {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* 按钮 */
+.link-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.link-btn:hover {
+  background: #333;
+}
+
+/* 简洁条目（本科/硕士/博士用） */
+/* Theses list container */
+.thesis-list {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 每一行 */
+.thesis-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+/* 条纹效果 */
+.thesis-row:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+.thesis-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* hover 效果（暂且不用，不误导用户有链接） */
+/* .thesis-row:hover {
+  background-color: #eaeaea;
+} */
+
+/* 左侧标题 */
+.thesis-title {
+  font-weight: 500;
+  color: #333;
+}
+
+/* 右侧年份 */
+.thesis-year {
+  color: #777;
+  font-size: 14px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* ========================= Event Page ========================= */
+
+.news {
+    width: 85%;
+    max-width: 900px;
+    margin: 100px auto;
+}
+
+.news h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.news-item {
+    display: flex;
+    gap: 40px;
+    padding: 35px 0;
+    /* border-top: 1px solid #ddd; */
+    border-bottom: 1px solid #ddd;
+}
+
+.news-img img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    transition: 0.3s;
+    margin: 0px 0px 0px 30px;
+}
+
+.news-img img:hover {
+    transform: scale(1.05);
+}
+
+.news-date {
+    color: #888;
+    font-size: 14px;
+}
+
+.news-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-content h2 {
+    /* margin: 10px 0 15px; */
+    font-size: 22px;
+}
+
+.news-content h2:hover {
+    color: #8c7b5f;
+}
+
+.news-content p{
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    padding-top: 10px;
+}
+
+/* ======================= Contact Us Page ======================= */
+
+.location {
+    width: 80%;
+    margin: 80px auto;
+    
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.map {
+    flex: 1;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+}
+
+.contact-us{
+    flex: 1;
+}
+
+.contact-col div {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.contact-col div .fa {
+    font-size: 22px;
+    color: #553CE2;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.contact-col h5 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.contact-col p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .location {
+        flex-direction: column;
+    }
+
+    .map iframe {
+        height: 300px;
+    }
+}
+
